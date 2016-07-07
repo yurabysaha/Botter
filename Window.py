@@ -1,3 +1,4 @@
+
 import SettingsBody
 from BaseTest import *
 from UpdatePictureLink import *
@@ -9,7 +10,7 @@ import Tkinter as tk
 root = tk.Tk()
 root.title('Botter')
 def xmlpath():
-    if os.uname()[0] == "Linux":
+    if platform.system() == "Linux":
         return '/'
     else:
         return '\\'
@@ -104,6 +105,6 @@ class Statistic:
 
 
 mWindow()
-
+print platform.system()
 
 root.mainloop()
