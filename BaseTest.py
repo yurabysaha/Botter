@@ -8,13 +8,13 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import NoSuchElementException
-
+import platform
 import unittest
 from xml.etree import ElementTree
 from xml.dom import minidom
 
 def xmlpath():
-    if os.uname()[0] == "Linux":
+    if platform.system() == "Linux":
         return '/'
     else:
         return '\\'
@@ -23,7 +23,7 @@ ROOT_PATH=os.getcwd() + xmlpath()
 
 
 def osw():
-    if os.uname()[0] == "Linux":
+    if platform.system() == "Linux":
         return ROOT_PATH + 'chromedriver'
     else:
         return ROOT_PATH + 'chromedriver.exe'

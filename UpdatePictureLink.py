@@ -1,11 +1,12 @@
 import os
+import platform
 import tkMessageBox
 import tkSimpleDialog
 import Tkinter as tk
 
 import xml.etree.ElementTree as ET
 def xmlpath():
-    if os.uname()[0] == "Linux":
+    if platform.system() == "Linux":
         return '/'
     else:
         return '\\'
