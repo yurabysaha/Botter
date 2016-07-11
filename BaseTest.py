@@ -73,6 +73,8 @@ class RobotTest(unittest.TestCase):
         lstgroup = tree22.findall('glink')
         not_posted = 0
         posted = 0
+        docnotposted = ET.parse(ROOT_PATH + 'link.xml')
+        root = docnotposted.getroot()
         for i in lstgroup:
 
             try:
@@ -89,27 +91,27 @@ class RobotTest(unittest.TestCase):
                 time.sleep(1)
                 picture1.send_keys(Keys.BACKSPACE)
                 # picture.send_keys("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b")
-                time.sleep(2)
-                picture1.send_keys(text)
-                time.sleep(5)
-                postBtn = driver.find_element_by_class_name(btn)
-                time.sleep(5)
-                postBtn.click()
-                time.sleep(10)
+                # time.sleep(2)
+                # picture1.send_keys(text)
+                # time.sleep(5)
+                # postBtn = driver.find_element_by_class_name(btn)
+                # time.sleep(5)
+                # postBtn.click()
+                # time.sleep(10)
                 posted = posted + 1
 
             except:
-                # doc = ET.parse(ROOT_PATH + 'link.xml')
-                # root = doc.getroot()
-                # new = ET.Element('glink')
-                # new.text = grouplinks
-                # root.append(new)
-                # doc.write(ROOT_PATH + 'link.xml', encoding="utf-8", xml_declaration=True)
-                not_posted_file = open(ROOT_PATH + "Not_posted.txt", "w")
-                not_posted_file.writelines(grouplinks)
-                not_posted_file.close()
+
+                newG = ET.Element('glink')
+                newG.text = grouplinks
+                root.append(newG)
+                docnotposted.write(ROOT_PATH + 'link.xml', encoding="utf-8", xml_declaration=True)
+                # not_posted_file = open(ROOT_PATH + "Not_posted.txt", "w")
+                # not_posted_file.writelines(grouplinks + '\n')
+                # not_posted_file.close()
                 not_posted = not_posted +1
                 continue
+
 
         text_file = open(ROOT_PATH + "Statistic.txt", "w")
         fuck = ["Not Posted in : %s " % not_posted + "\n", "Posted in : %s" % posted]
