@@ -83,14 +83,14 @@ class RobotTest(unittest.TestCase):
                 time.sleep(2)
                 textArea1.send_keys(picture)
                 time.sleep(10)
-                picture = driver.find_element_by_class_name("_5rpu")
+                picture1 = driver.find_element_by_class_name("_5rpu")
                 time.sleep(1)
-                picture.send_keys(Keys.CONTROL + 'a')
+                picture1.send_keys(Keys.CONTROL + 'a')
                 time.sleep(1)
-                picture.send_keys(Keys.BACKSPACE)
+                picture1.send_keys(Keys.BACKSPACE)
                 # picture.send_keys("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b")
                 time.sleep(2)
-                picture.send_keys(text)
+                picture1.send_keys(text)
                 time.sleep(5)
                 postBtn = driver.find_element_by_class_name(btn)
                 time.sleep(5)
@@ -99,12 +99,15 @@ class RobotTest(unittest.TestCase):
                 posted = posted + 1
 
             except:
-                doc = ET.parse(ROOT_PATH + 'link.xml')
-                root = doc.getroot()
-                new = ET.Element('glink')
-                new.text = grouplinks
-                root.append(new)
-                doc.write(ROOT_PATH + 'link.xml', encoding="utf-8", xml_declaration=True)
+                # doc = ET.parse(ROOT_PATH + 'link.xml')
+                # root = doc.getroot()
+                # new = ET.Element('glink')
+                # new.text = grouplinks
+                # root.append(new)
+                # doc.write(ROOT_PATH + 'link.xml', encoding="utf-8", xml_declaration=True)
+                not_posted_file = open(ROOT_PATH + "Not_posted.txt", "w")
+                not_posted_file.writelines(grouplinks)
+                not_posted_file.close()
                 not_posted = not_posted +1
                 continue
 
