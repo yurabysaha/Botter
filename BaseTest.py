@@ -1,6 +1,8 @@
 import os
 import random
 import time
+
+import xmlformatter
 from selenium import webdriver
 import xml.etree.ElementTree as ET
 
@@ -120,6 +122,14 @@ class RobotTest(unittest.TestCase):
         text_file.close()
 
         driver.close()
+        formatter = xmlformatter.Formatter(indent="1", indent_char="\t", encoding_output="ISO-8859-1",
+                                           preserve=["literal"])
+
+        formated_xml = formatter.format_file(ROOT_PATH + 'link.xml')
+
+        a = open(ROOT_PATH + 'link.xml', 'w')
+        formated_xml.write(a)
+
 
 def suite():
     test_suite = unittest.TestSuite()
