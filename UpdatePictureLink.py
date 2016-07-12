@@ -5,6 +5,10 @@ import tkSimpleDialog
 import Tkinter as tk
 
 import xml.etree.ElementTree as ET
+
+from tkinter import font
+
+
 def xmlpath():
     if platform.system() == "Linux":
         return '/'
@@ -23,11 +27,11 @@ class UpdateLink:
         title = tk.Label(body, text="Picture link", font="Arial 12")
         title.grid(row = 1, column = 1)
 
+        butfont = font.Font(family='Ubuntu', size=10)
         but = tk.Button(body,
-                            text="Update",
-                            width=6, height=1,
-                            bg="red", fg="black")
-
+                        text="Update",
+                        width=6, height=1,
+                        bg="red", fg="white", font=butfont)
         but.bind("<Button-1>", self.updatePLink)
         but.grid(row = 1, column = 3)
 

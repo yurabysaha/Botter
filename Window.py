@@ -1,3 +1,4 @@
+from tkinter import font
 
 import SettingsBody
 from BaseTest import *
@@ -19,15 +20,15 @@ ROOT_PATH=os.getcwd() + xmlpath()
 
 class But_start:
     def __init__(self):
+        butfont = font.Font(family='Ubuntu', size=12)
         self.but = tk.Button(niz,
                             text="Start Bot",
-                            width=10, height=3,
-                            bg="green", fg="black")
+                            width=12, height=3,
+                            bg="green", fg="white", font=butfont)
         self.but.bind("<Button-1>", self.startBot)
         self.but.pack()
 
     def startBot(self, event):
-
         BaseTest.unittest.TextTestRunner().run(suite())
         Statistic()
 
@@ -47,10 +48,11 @@ niz.grid(row=3)
 
 class Settings:
     def __init__(self, place):
+        butfont = font.Font(family='Ubuntu', size=10)
         self.but = tk.Button(place,
                               text="Settings",
                               width=8, height=1,
-                              bg="green", fg="black")
+                              bg="green", fg="white", font=butfont)
 
         self.but.bind("<Button-1>", self.openSettings)
         self.but.grid(row=1, column=2)
@@ -65,10 +67,11 @@ class Settings:
 
 class mainWindowBtn:
     def __init__(self, place):
+        butfont = font.Font(family='Ubuntu', size=10)
         self.but = tk.Button(place,
                           text="Main",
                           width=8, height=1,
-                          bg="green", fg="black")
+                          bg="green", fg="white", font=butfont)
 
         self.but.bind("<Button-1>", self.mWindow)
         self.but.grid(row=1, column=1)
@@ -105,6 +108,5 @@ class Statistic:
 
 
 mWindow()
-print platform.system()
 
 root.mainloop()

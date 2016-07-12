@@ -13,6 +13,7 @@ import unittest
 from xml.etree import ElementTree
 from xml.dom import minidom
 
+
 def xmlpath():
     if platform.system() == "Linux":
         return '/'
@@ -27,6 +28,7 @@ def osw():
         return ROOT_PATH + 'chromedriver'
     else:
         return ROOT_PATH + 'chromedriver.exe'
+
 
 class RobotTest(unittest.TestCase):
     def setUp(self):
@@ -90,14 +92,14 @@ class RobotTest(unittest.TestCase):
                 picture1.send_keys(Keys.CONTROL + 'a')
                 time.sleep(1)
                 picture1.send_keys(Keys.BACKSPACE)
-                # picture.send_keys("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b")
-                # time.sleep(2)
-                # picture1.send_keys(text)
-                # time.sleep(5)
-                # postBtn = driver.find_element_by_class_name(btn)
-                # time.sleep(5)
-                # postBtn.click()
-                # time.sleep(10)
+                #picture1.send_keys("\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b")
+                time.sleep(2)
+                picture1.send_keys(text)
+                time.sleep(5)
+                postBtn = driver.find_element_by_class_name(btn)
+                time.sleep(5)
+                postBtn.click()
+                time.sleep(10)
                 posted = posted + 1
 
             except:
@@ -111,7 +113,6 @@ class RobotTest(unittest.TestCase):
                 # not_posted_file.close()
                 not_posted = not_posted +1
                 continue
-
 
         text_file = open(ROOT_PATH + "Statistic.txt", "w")
         fuck = ["Not Posted in : %s " % not_posted + "\n", "Posted in : %s" % posted]

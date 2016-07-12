@@ -2,9 +2,9 @@ import os
 import platform
 import tkMessageBox
 import Tkinter as tk
-
-
 import xml.etree.ElementTree as ET
+from tkinter import font
+
 def xmlpath():
     if platform.system() == "Linux":
         return '/'
@@ -12,6 +12,7 @@ def xmlpath():
         return '\\'
 
 ROOT_PATH=os.getcwd() + xmlpath()
+
 
 class UserFields:
     def __init__(self, body, niz):
@@ -24,6 +25,10 @@ class UserFields:
         doc = ET.parse(ROOT_PATH + 'user.xml')
         mail = doc.find('email').text
         password = doc.find('password').text
+
+        if mail == None or password == None:
+            mail = ''
+            password = ''
 
         titleEmail = tk.Label(body, text="Email : " + mail, font="Arial 12")
         titleEmail.grid(row=2, column=1, columnspan=2)
@@ -50,14 +55,13 @@ class UserFields:
         title = tk.Label(body, text="Password", font="Arial 12")
         title.grid(row=6, column=1)
 
+        butfont = font.Font(family='Ubuntu', size=10)
         but = tk.Button(niz,
-                          text="Update",
-                          width=6, height=1,
-                          bg="red", fg="black")
-
+                        text="Update",
+                        width=6, height=1,
+                        bg="red", fg="white", font=butfont)
         but.bind("<Button-1>", self.updateUser)
-        but.grid(row=1, column=3)
-
+        but.grid(row=1, column=2)
 
     def updateUser(self, event):
         doc = ET.parse(ROOT_PATH + 'user.xml')
